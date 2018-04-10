@@ -5,11 +5,14 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class FiftyPrimaryExercises {
-
+	@Test
+	public void e() {
+		
+	}
 	@Test
 	public void e1() {
 		//1.古典问题：有一对兔子，从出生后第3个月起每个月都生一对兔子，小兔子长到第三个月后每个月又生一对兔子，假如兔子都不死，问每个月的兔子总数为多少？		
-		System.out.println(rabbit(1));
+		System.out.println("第8个月有" + rabbit(8) + "对兔子");
 	}
 	public int rabbit(int month)
 	{		
@@ -20,26 +23,87 @@ public class FiftyPrimaryExercises {
 			sum = 1;
 		}
 		return sum;
-	}
+	}	
+//	2.判断101到200之间有多少个素数？并输出所有素数。
+//	算法分析：判断素数的方法：用一个数分别去除2到sqrt(这个数)，如果能被整除，增表明这个数不是素数，反之是素数。
 	@Test
 	public void e2() {
-		System.out.println("22");
+		int sum = 0;
+		for(int i = 101; i < 200; i++)
+		{
+			boolean flag = false;
+			for(int j = 2; j <= Math.sqrt(i); j++)
+			{
+				if(i % j != 0)
+				{
+					flag = true;
+				} else{
+					flag = false;
+					break;
+				}
+			}
+			if(flag)
+			{
+				sum ++;
+				System.out.println(i + "是素数");				
+			}
+		}
+		System.out.println("101-200之间共有素数" + sum + "个.");		
+	}
+//	3.答应出所有的水仙花数：一个三位数，其各位数字立方和等于该数本身。例如153是，因为153=1的立方+5的立方+3的立方.
+	@Test
+	public void e3(){
+		int sum = 0;
+		for(int i = 100; i <= 999; i++)
+		{
+			int a = i / 100;
+			int b = (i - a*100) / 10;
+			int c = i % 10;
+			if(i == a*a*a + b*b*b +c*c*c)
+			{
+				sum ++;
+				System.out.println(i + "是水仙花数.");
+			}
+		}
+		System.out.println("水仙花数共有:" + sum + "个");
+	}
+//	4.将一个正整数分解质因数。例如：输入90，打印出90=2*3*3*5.
+//	算法分析：
+//	1)对n进行分解质因数应先找到一个最小的质数k，然后按一下步骤完成：
+//	2)如果这个质数等于n，则说明分解质因数完成，打印出该数；
+//	3)如果n不等于k，但n能被k整除，则应打印出k的值，并用n除以k的商，作为新的正整数n，重复执行第一步；
+//	4)如果n不能被k整除，则用k+1作为k的值，重复执行第一步。
+	@Test
+	public void e4(){
+		int i = 27;
+		int k = 2;
+		System.out.print(i + "=");
+		splitInteger(i, k);		
+	}
+	void splitInteger(int i, int k)
+	{
+		if(i == k)
+		{
+			System.out.println(k);
+		} else {
+			if(i % k == 0)
+			{
+				System.out.print(k + "*");
+				i = i / k;
+				splitInteger(i, k);
+			} else {
+				splitInteger(i, ++k);
+			}
+		}
 	}
 
 //
-//	2.判断101到200之间有多上个素数？并输出所有素数。
-//	算法分析：判断素数的方法：用一个数分别去除2到sqrt(这个数)，如果能被整除，增表明这个数不是素数，反之是素数。
-//
-//	3.答应出所有的水仙花数：一个三位数，其各位数字立方和等于该数本身。例如153是，因为153=1的立方+5的立方+3的立方.
-//
-//	4.将一个正整数分解质因数。例如：输入90，打印出90=2*3*3*5.
-//	算法分析：对n进行分解质因数应先找到一个最小的质数k，然后按一下步骤完成：
-//	1）如果这个质数等于n，则说明分解质因数完成，打印出该数；
-//	2）如果n不等于k，但n能被k整除，则应打印出k的值，并用n除以k的商，作为新的正整数n，重复执行第一步；
-//	3）如果n不能被k整除，则用k+1作为k的值，重复执行第一步。
-//
 //	5.利用条件运算符的嵌套完成：学习成绩>=90分的同学用A表示，60-89之间的用B表示，60分以下的用C表示。
-//
+	@Test
+	public void e5(){
+		int score = 99;
+		System.out.println(score >= 90 ? "A" : (score >= 60 && score <=89 ? "B" : "C"));
+	}
 //	6.输入两个正整数m和n，求其最大公约数和最小公倍数.
 //	算法分析：在循环中，只要除数不等于0，用较大数除以较小数，将小的一个数作为下一轮循环的大数，取得的余数作为下一轮循环较小的数；如此循环直到最小的数为0，返回较大的数，此数即为最大公约数，最小公倍数为两数之积除以最大公约数。
 //
