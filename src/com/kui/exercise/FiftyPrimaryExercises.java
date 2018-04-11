@@ -52,7 +52,7 @@ public class FiftyPrimaryExercises {
 	}
 //	3.答应出所有的水仙花数：一个三位数，其各位数字立方和等于该数本身。例如153是，因为153=1的立方+5的立方+3的立方.
 	@Test
-	public void e3(){
+	public void e3() {
 		int sum = 0;
 		for(int i = 100; i <= 999; i++)
 		{
@@ -74,7 +74,7 @@ public class FiftyPrimaryExercises {
 //	3)如果n不等于k，但n能被k整除，则应打印出k的值，并用n除以k的商，作为新的正整数n，重复执行第一步；
 //	4)如果n不能被k整除，则用k+1作为k的值，重复执行第一步。
 	@Test
-	public void e4(){
+	public void e4() {
 		int i = 27;
 		int k = 2;
 		System.out.print(i + "=");
@@ -96,17 +96,29 @@ public class FiftyPrimaryExercises {
 			}
 		}
 	}
-
-//
 //	5.利用条件运算符的嵌套完成：学习成绩>=90分的同学用A表示，60-89之间的用B表示，60分以下的用C表示。
 	@Test
-	public void e5(){
+	public void e5() {
 		int score = 99;
 		System.out.println(score >= 90 ? "A" : (score >= 60 && score <=89 ? "B" : "C"));
 	}
 //	6.输入两个正整数m和n，求其最大公约数和最小公倍数.
-//	算法分析：在循环中，只要除数不等于0，用较大数除以较小数，将小的一个数作为下一轮循环的大数，取得的余数作为下一轮循环较小的数；如此循环直到最小的数为0，返回较大的数，此数即为最大公约数，最小公倍数为两数之积除以最大公约数。
-//
+//	算法分析：在循环中，只要除数不等于0，用较大数除以较小数，将小的一个数作为下一轮循环的大数，取得的余数作为下一轮循环较小的数；
+//	如此循环直到最小的数为0，返回较大的数，此数即为最大公约数，最小公倍数为两数之积除以最大公约数。
+	@Test
+	public void e6(){
+		int i = 6;
+		int j = 9;
+		int temp_i = i;
+		int temp_j = j;
+		while(i > 0)
+		{
+			int temp = j % i;
+			j = i;
+			i = temp;
+		}
+		System.out.println("两数最大公约数为：" + j + "，最小公倍数为：" + temp_i*temp_j/j);		
+	}
 //	7.输入一行字符，分别统计出其中英文字母、空格、数字和其他字符的个数。
 //
 //	8.求s=a+aa+aaa+aaaa+aa...a的值，其中a是一个数字。例如2+22+222+2222+2222(此时共有5个数相加)，几个数相加由键盘输入。
