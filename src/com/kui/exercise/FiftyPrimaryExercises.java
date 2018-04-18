@@ -120,13 +120,53 @@ public class FiftyPrimaryExercises {
 		System.out.println("两数最大公约数为：" + j + "，最小公倍数为：" + temp_i*temp_j/j);		
 	}
 //	7.输入一行字符，分别统计出其中英文字母、空格、数字和其他字符的个数。
-//
+	@Test
+	public void e7() {
+		System.out.println("请输入一行字符：");
+		String str = "";
+		
+		
+	}
 //	8.求s=a+aa+aaa+aaaa+aa...a的值，其中a是一个数字。例如2+22+222+2222+2222(此时共有5个数相加)，几个数相加由键盘输入。
-//
+	@Test
+	public void e8() {
+		System.out.println("请出入相加的数字个数：");
+		
+	}
 //	9.一个数如果恰好等于它的因子之和，这个数就成为“完数”，例如6=1+2+3.编程找出1000以内所有完数。
-//
+	@Test
+	public void e9() {
+		for (int i = 1; i < 1000; i++) {
+			int sum = 0;
+			for (int j = 1; j <= i/2; j++) {
+				if(i % j == 0) {
+					sum = sum + j;
+				}
+			}
+			if(sum == i) {
+				System.out.println(i + "是完数"); 
+			}
+		}
+	}
 //	10.一球从100米高度自由落下，每次落地后反跳原高度一半，再落下，求它在第10次落地时，共经过多少米？第10次反弹多高？
-//
+	@Test
+	public void e10() {
+		int n = 3;
+		float high = 100;
+		float distance = 0;
+		float rebound = 0;
+		for(int i = 1; i <= n; i++) {
+			if(i == 1) {
+				distance = 100;
+			} else {
+				distance += high*2;
+			}			
+			rebound = high/2;
+			high = high/2;
+		}
+		System.out.println("第" + n + "次落地时经过" + distance + "米，第" + n + "次反弹高度为：" + high + "米");
+	}
+
 //	11.有1、2、3/4四个数字，能组成多少个互不相同且无重复数字的三位数？都是多少？
 //
 //	12.企业发放的奖金根据利润提成。利润低于或等于10万时，奖金可提10%；利润高于10万元低于20万元时，高于10万元的部分可提成7.5%；利润在20到40万元之间时，高于20万元的部分可提成5%；利润40到60万元时，高于40万元的部分可提成3%；利润60到100万之间时，高出60万部分可提成1.5%；利润高于100万时，高出100万的部分按1%提成。从键盘输入当月利润，求应当发奖金总数多少？
